@@ -20,13 +20,12 @@ export const UserPanel: React.FC = () => {
     const [poapsList, showPoapsList] = useState<boolean>(false);
     const [verifyList, showVerifyList] = useState<boolean>(false);
     const [listType, setListType] = useState(false);
-    const [NEXT_PUBLIC_ALCHEMY_ID, setAlchemyID] = useState("");
     //fetch the user ether balance from ehterscan API
 
     useEffect(() => {
         (async () => {
             setIsLoading(true);
-            setAlchemyID("ebVtfQPEno3FBoX0wc13m_SQUslqfywc");
+            const NEXT_PUBLIC_ALCHEMY_ID = "ebVtfQPEno3FBoX0wc13m_SQUslqfywc";
             const res = await fetch(
                 `https://eth-mainnet.alchemyapi.io/v2/${NEXT_PUBLIC_ALCHEMY_ID}/getNFTs/?owner=${selectAddress}`
             );
@@ -38,7 +37,7 @@ export const UserPanel: React.FC = () => {
             setNftCount(response.ownedNfts.length);
             setIsLoading(false);
         })();
-    }, [NEXT_PUBLIC_ALCHEMY_ID, selectAddress]);
+    }, [selectAddress]);
 
     useEffect(() => {
         (async () => {
