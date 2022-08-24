@@ -27,10 +27,29 @@ export const SocialSection = ({ address }: Props) => {
     useEffect(() => {
         refetch();
         if (data) {
+            console.log(2);
             setsocialData(data);
         }
     }, [data, refetch]);
 
+    const tweetButtonClick = async() =>{
+        const accounts = await window.ethereum.request({
+            method: "eth_requestAccounts"
+          });
+      
+          // Check clause for handle
+          if (!handle) return;
+      
+          // Generate the signature
+          const sig = await twitterAuthorize(window.ethereum, accounts[0], handle);
+      
+          // The message that the user posts on Twitter
+          const message = `Verifying my Web3 identity on @cyberconnecthq: %23LetsCyberConnect %0A ${sig}`;
+      
+          // Open new window so that the user can post on Twitter
+          window.open(`https://twitter.com/intent/tweet?text=${message}`, "_blank");
+    } 
+    
     const twitterVerifyClick = async () => {
         // Get the MetaMask wallet address
         const accounts = await window.ethereum.request({
@@ -38,14 +57,7 @@ export const SocialSection = ({ address }: Props) => {
         });
         
         if (!handle) return;
-
-        const sig = await twitterAuthorize(window.ethereum, accounts[0], handle);
-
-        const message = `Verifying my Web3 identity on @cyberconnecthq: %23LetsCyberConnect %0A ${sig}`;
         
-        // window.open(`https://twitter.com/intent/tweet?text=${message}`, "_blank");
-
-        console.log(message);
         // Verify the Twitter account
         try {
           await twitterVerify(accounts[0], handle);
@@ -132,8 +144,13 @@ export const SocialSection = ({ address }: Props) => {
                             onChange = {getValue}
                         />
                     </div>
-                    <div className={styles.signButtonStyle} onClick={()=>twitterVerifyClick()}>
-                        Sign
+                    <div className={styles.signButtonDiv}>
+                        <div className={styles.signButtonStyle} onClick={()=>tweetButtonClick()}>
+                            Tweet Message
+                        </div>
+                        <div className={styles.verifyButtonStyle} onClick={()=>twitterVerifyClick()}>
+                            Verify Twitter
+                        </div>
                     </div>
 
                 </div>
