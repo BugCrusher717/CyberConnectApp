@@ -11,6 +11,9 @@ import "../../styles/globals.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
 
+    const NEXT_PUBLIC_MORALIS_SERVER_URL = "https://rcilxpxrbaqi.usemoralis.com:2053/server";
+    const NEXT_PUBLIC_MORALIS_APP_ID = "hIOGSYq1EZARrCeU5mgofDu1pbq2cUirtq9IcTSX";
+
     return (
         <div>
             <StyledEngineProvider injectFirst>
@@ -19,9 +22,9 @@ function MyApp({ Component, pageProps }: AppProps) {
                         <GraphContextProvider>
                             <MoralisProvider
                                 serverUrl={
-                                    process.env.NEXT_PUBLIC_MORALIS_SERVER_URL!
+                                    NEXT_PUBLIC_MORALIS_SERVER_URL!
                                 }
-                                appId={process.env.NEXT_PUBLIC_MORALIS_APP_ID!}
+                                appId={NEXT_PUBLIC_MORALIS_APP_ID!}
                             >
                                 <Component {...pageProps} />
                             </MoralisProvider>
