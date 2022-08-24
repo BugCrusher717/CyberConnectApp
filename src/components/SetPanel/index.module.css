@@ -271,3 +271,103 @@
     flex-direction: column;
     height: 150px;
 }
+
+
+/*Modal*/
+.modalTitle{
+    color: #fff;
+    line-height: 2rem;
+    font-weight: 800;
+}
+
+.modalMainP{
+    color: #7b7d82;
+    margin-top: 1rem;
+}
+
+.walletModalDiv{
+    padding: 1rem;
+    background-color: var(--bg-lighter);
+    border-radius: 0.375rem;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    margin-top: 1rem;
+}
+
+.modalunverifiedP{
+    font-size: .875rem;
+    line-height: 1.25rem;
+    color:#ffd138;
+}
+
+.twitterHandleDiv{
+    box-shadow: var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow);
+    border-radius: 0.375rem;
+    flex-direction: row;
+    display: flex;
+    justify-content: left;
+    /* align-items: center;
+    justify-items: center;
+    text-align: center; */
+    width: 100%;
+    background-color: #7b7d82;
+    position: relative;
+}
+
+.spanStyle{
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    color: #fff;
+}
+
+.pointerDiv{
+    padding-left: 0.75rem;
+    align-items: center;
+    display: flex;
+    position: absolute;
+}
+
+.inputStyle{
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    color: #00000e;
+    padding-left: 1.75rem;
+    padding-right: 3rem;
+    padding: 1rem;
+    border-radius: 0.375rem;
+    border: none;
+    background-color: #ffffff;
+    width: 100%;
+}
+
+.signButtonStyle{
+    color: #000;
+    padding: 0.75rem;
+    background-color: #fff;
+    margin-top: 1rem;
+    cursor: pointer;
+    border-radius: 0.375rem;
+    width: 100%;
+}
+
+.avatar {
+    border-radius: 10px;
+    background-color: #FFB600;
+    width: 50px;
+    height: 50px; 
+}
+
+.addressSection{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.walletAddressModalP{
+    color: #fff;
+    font-weight: 600;
+    line-height: 1.75rem;
+    font-size: 1.125rem;
+    margin-left: 1rem;
+}
