@@ -23,7 +23,6 @@ export const UserPanel: React.FC = () => {
 
     //fetch the user ether balance from ehterscan API
     const NEXT_PUBLIC_ALCHEMY_ID = "ebVtfQPEno3FBoX0wc13m_SQUslqfywc";
-    
 
     useEffect(() => {
         (async () => {
@@ -167,7 +166,7 @@ export const UserPanel: React.FC = () => {
                         <Typography color={"#989898"}>POAPS</Typography>
                     </div>
                     <div className={styles.verifiedCountSection}>
-                        {identity?.twitter ? (
+                        {identity.social.twitter ? (
                             <>
                                 <Typography
                                     variant="h3"

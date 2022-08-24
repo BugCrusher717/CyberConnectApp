@@ -25,6 +25,11 @@ const FocusGraph = () => {
         };
     }, []);
 
+    const updateHighlight = () => {
+        setHighlightNodes(highlightNodes);
+        setHighlightLinks(highlightLinks);
+    };
+    
     const handleClick = useCallback(
         (node) => {
             highlightNodes.clear();
@@ -55,13 +60,10 @@ const FocusGraph = () => {
             }
             setSelectAddress(node.id);
         },
-        [fgRef, setSelectAddress, highlightLinks, highlightNodes]
+        [fgRef, setSelectAddress, highlightLinks, highlightNodes, updateHighlight]
     );
 
-    const updateHighlight = () => {
-        setHighlightNodes(highlightNodes);
-        setHighlightLinks(highlightLinks);
-    };
+    
 
     function getRandomInt(max: number) {
         return Math.floor(Math.random() * max);
