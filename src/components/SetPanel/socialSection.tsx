@@ -2,7 +2,7 @@
 import { GET_SOCIAL } from "@/graphql/queries/get_social";
 import { formatAddress } from "@/utils/helper";
 import { useQuery } from "@apollo/client";
-import { githubVerify, twitterVerify } from "@cyberlab/social-verifier";
+import { twitterVerify } from "@cyberlab/social-verifier";
 import { Modal } from "@mantine/core";
 import { useEffect, useState } from "react";
 import styles from "./index.module.css";
@@ -49,16 +49,7 @@ export const SocialSection = ({ address }: Props) => {
 
     const githubVerifyClick = async () => {
         // Get the MetaMask wallet address
-        const accounts = await window.ethereum.request({
-          method: "eth_requestAccounts"
-        });
-  
-        try {
-          await githubVerify(accounts[0], "CyberGraph" , "Cyber Connect");
-          alert(`Success: you've verified ${handle}!`);
-        } catch (error) {
-          console.error("asfd:", error);
-        }
+        window.open(`https://github.com/${handle}`, "_blank");
     };
 
     const getValue = async (e: { target: { value: string } }) =>{
@@ -75,8 +66,8 @@ export const SocialSection = ({ address }: Props) => {
                 onClose={() => setGithubOpened(false)}
             >
                 <div className={styles.totalModalDiv}>
-                    <p className={styles.modalTitle}>Verify message</p>
-                    <p className={styles.modalMainP}>Please write a Username that you want to verify.</p>
+                    <p className={styles.modalTitle}>Github</p>
+                    <p className={styles.modalMainP}>Please write a Username</p>
                     <div className={styles.walletModalDiv}>
                         <div className={styles.addressSection}>
                             <img
@@ -85,9 +76,6 @@ export const SocialSection = ({ address }: Props) => {
                             />
                             <p className={styles.walletAddressModalP}>{formatAddress(address)}</p>
                         </div>  
-                        <div>
-                            <p className={styles.modalunverifiedP}>Unverified</p>
-                        </div>
                     </div>
                     <div className={styles.twitterHandleDiv}>
                         <input
@@ -227,7 +215,7 @@ export const SocialSection = ({ address }: Props) => {
                         <p>Github</p>
                     </div>
                     <div className={styles.verifyDiv} onClick={()=>setGithubOpened(true)}>
-                        <p className={styles.unverifiedP}>Unverified</p>
+                        <p className={styles.unverifiedP}>Connect to Github</p>
                     </div>
                 </div>
             </div>
