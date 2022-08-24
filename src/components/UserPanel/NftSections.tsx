@@ -20,8 +20,9 @@ export const NftSections: React.FC = ({}) => {
     useEffect(() => {
         (async () => {
             setIsLoading(true);
+            const NEXT_PUBLIC_ALCHEMY_ID = "ebVtfQPEno3FBoX0wc13m_SQUslqfywc";
             const res = await fetch(
-                `https://eth-mainnet.alchemyapi.io/v2/${process.env.NEXT_PUBLIC_ALCHEMY_ID}/getNFTs/?owner=${selectAddress}`
+                `https://eth-mainnet.alchemyapi.io/v2/${NEXT_PUBLIC_ALCHEMY_ID}/getNFTs/?owner=${selectAddress}`
             );
 
             let response;
