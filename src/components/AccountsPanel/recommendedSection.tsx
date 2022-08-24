@@ -17,18 +17,20 @@ interface Props {
 export const RecommendedSection = ({ address }: Props) => {
     const [recommendData, setRecommendData] = useState<any>([]);
 
-    useEffect(() => {
-        refetch();
-        if (data) {
-            setRecommendData(data.recommendations.data.list);
-        }
-    });
-
     const { data, refetch } = useQuery(GET_RECOMMENDATION, {
         variables: {
             address: address,
         },
     });
+
+    useEffect(() => {
+        refetch();
+        if (data) {
+            setRecommendData(data.recommendations.data.list);
+        }
+    }, [data, refetch]);
+
+    
 
     return (
         <>

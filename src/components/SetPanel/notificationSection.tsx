@@ -10,18 +10,21 @@ interface Props {
 
 export const NotificationSection = ({ address }: Props) => {
     const [notificationData, setNotificationData] = useState<any>([]);
-    useEffect(() => {
-        refetch();
-        if (data) {
-            setNotificationData(data.identity.notifications.list);
-        }
-    });
 
     const { data, refetch } = useQuery(GET_NOTIFICATIONS, {
         variables: {
             address: address,
         },
     });
+
+    useEffect(() => {
+        refetch();
+        if (data) {
+            setNotificationData(data.identity.notifications.list);
+        }
+    }, [data, refetch]);
+
+    
 
     return (
         <>

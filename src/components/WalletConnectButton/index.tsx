@@ -16,7 +16,7 @@ export const WalletConnectButton: React.FC = () => {
 
     const showModal = useCallback(async () => {
         setOpened(true);
-    }, [opened]);
+    }, []);
 
     const connect = useCallback(async () => {
         await connectWallet();
@@ -26,7 +26,7 @@ export const WalletConnectButton: React.FC = () => {
 
     const hideButton = useCallback(async () => {
         router.push("/");
-    }, [dropdownOpen]);
+    }, []);
     //if user didn't successfully logged in, we shows the wallet connect button
     //if user logged in, we show the logged in user's ens or edited address
     return (

@@ -34,7 +34,6 @@ export const NftSections: React.FC = ({}) => {
     }, [selectAddress]);
 
     const sleep = (ms: number | undefined) => {
-        // alert(ms);
         return new Promise((resolve) => setTimeout(resolve, ms));
     };
 
@@ -56,7 +55,7 @@ export const NftSections: React.FC = ({}) => {
                 setqrData(Data);
             }
         },
-        [opened]
+        [nfts]
     );
 
     const getImageUrl = (nft: any) => {

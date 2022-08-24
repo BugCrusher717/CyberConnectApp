@@ -10,18 +10,20 @@ interface Props {
 export const SocialSection = ({ address }: Props) => {
     const [socialData, setsocialData] = useState<any>([]);
 
-    useEffect(() => {
-        refetch();
-        if (data) {
-            setsocialData(data);
-        }
-    });
-
     const { data, refetch } = useQuery(GET_SOCIAL, {
         variables: {
             address: address,
         },
     });
+
+    useEffect(() => {
+        refetch();
+        if (data) {
+            setsocialData(data);
+        }
+    }, [data, refetch]);
+
+    
 
     return (
         <>

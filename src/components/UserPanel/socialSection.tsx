@@ -11,19 +11,22 @@ export const SocialSection = ({ address }: Props) => {
 
     const [socialData, setsocialData] = useState<any>([]);
 
+    const { data, refetch } = useQuery(GET_SOCIAL, {
+        variables: {
+            address: address,
+        },
+    });
+
+
     useEffect(() => {
         refetch();
         if(data)
         {
             setsocialData(data);
         }
-    });
+    }, [data, refetch]);
 
-    const { data, refetch } = useQuery(GET_SOCIAL, {
-        variables: {
-            address: address,
-        },
-    });
+    
 
     return (
         <>

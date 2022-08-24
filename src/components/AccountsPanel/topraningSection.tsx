@@ -17,13 +17,6 @@ interface Props {
 export const TopRankingSection = ({ address }: Props) => {
     const [topRankingData, setTopRankingData] = useState<any>([]);
 
-    useEffect(() => {
-        refetch();
-        if (data) {
-            setTopRankingData(data.rankings.list);
-        }
-    });
-
     const { data, refetch } = useQuery(GET_TOPRANKING, {
         variables: {
             namespace: "CyberConnect",
@@ -31,6 +24,15 @@ export const TopRankingSection = ({ address }: Props) => {
             after: "-1",
         },
     });
+
+    useEffect(() => {
+        refetch();
+        if (data) {
+            setTopRankingData(data.rankings.list);
+        }
+    }, [data, refetch]);
+
+    
 
     return (
         <>

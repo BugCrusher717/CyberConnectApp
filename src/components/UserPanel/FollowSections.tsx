@@ -13,6 +13,14 @@ interface Props {
 export const FollowSections = ({ address, listType }: Props) => {
     const [modalType, setModalType] = useState<any>([]);
 
+    const { data, refetch } = useQuery(GET_ADDR_CONNECTION_QUERY, {
+        variables: {
+            address: address,
+            first: 50,
+            after: "-1",
+        },
+    });
+
     useEffect(() => {
         refetch();
 
@@ -23,15 +31,9 @@ export const FollowSections = ({ address, listType }: Props) => {
                 setModalType(data.identity.followers.list);
             }
         }
-    });
+    }, [data, listType, refetch]);
 
-    const { data, refetch } = useQuery(GET_ADDR_CONNECTION_QUERY, {
-        variables: {
-            address: address,
-            first: 50,
-            after: "-1",
-        },
-    });
+    
 
     return (
         <>
