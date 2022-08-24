@@ -91,7 +91,7 @@ export const SocialSection = ({ address }: Props) => {
                                 </a>
                             </div>
                             <div className={styles.verifyDiv}>
-                                <p className={styles.verifiedP}>Unverified</p>
+                                <p className={styles.unverifiedP}>Unverified</p>
                             </div>
                         </div>
                     )}

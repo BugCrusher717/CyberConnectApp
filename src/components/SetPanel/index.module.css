@@ -241,6 +241,19 @@
     color: #27AE60;
 }
 
+.unverifiedP{
+    width: 63px;
+    height: 24px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    color: #fff;
+}
+
 .socialSection{
     display: flex;
     justify-content: center;
@@ -250,4 +263,11 @@
 .notificationPanel{
     width: 100%;
     padding: 20px;
+}
+
+.allNotificationDiv{
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    height: 150px;
 }

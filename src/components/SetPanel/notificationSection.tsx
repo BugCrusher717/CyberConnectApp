@@ -27,7 +27,7 @@ export const NotificationSection = ({ address }: Props) => {
     
 
     return (
-        <>
+        <div className={styles.allNotificationDiv}>
             {notificationData ? (
                 notificationData.map(
                     (
@@ -58,6 +58,6 @@ export const NotificationSection = ({ address }: Props) => {
                     </p>
                 </div>
             )}
-        </>
+        </div>
     );
 };
