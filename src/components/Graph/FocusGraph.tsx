@@ -1,9 +1,8 @@
 // src\components\Graph\FocusGraph.tsx
 
-// import dynamic from "next/dynamic";
 import { GraphLink, useGraph } from "@/context/GraphContext";
 import { formatAddress } from "@/utils/helper";
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import ForceGraph3D, { ForceGraphMethods } from "react-force-graph-3d";
 import * as THREE from "three";
 import { Vector2 } from "three";

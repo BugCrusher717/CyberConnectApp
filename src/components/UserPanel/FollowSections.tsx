@@ -11,18 +11,15 @@ interface Props {
 }
 
 export const FollowSections = ({ address, listType }: Props) => {
-
     const [modalType, setModalType] = useState<any>([]);
 
     useEffect(() => {
         refetch();
 
-        if(data){
-            if(listType)
-            {
+        if (data) {
+            if (listType) {
                 setModalType(data.identity.following.list);
-            }
-            else{
+            } else {
                 setModalType(data.identity.followers.list);
             }
         }
@@ -38,7 +35,7 @@ export const FollowSections = ({ address, listType }: Props) => {
 
     return (
         <>
-            {modalType ?
+            {modalType ? (
                 modalType.map(
                     (
                         value: {
@@ -96,13 +93,11 @@ export const FollowSections = ({ address, listType }: Props) => {
                         );
                     }
                 )
-                :
-                (
-                    <div className={styles.noNftsInSection}>
-                        <p>Empty</p>
-                    </div>
-                )
-            }
+            ) : (
+                <div className={styles.noNftsInSection}>
+                    <p>Empty</p>
+                </div>
+            )}
         </>
     );
 };

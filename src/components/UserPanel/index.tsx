@@ -138,7 +138,9 @@ export const UserPanel: React.FC = () => {
                                 showVerifyList(false),
                             ]}
                         >
-                            {Number(identity.followerCount + identity.followingCount)}
+                            {Number(
+                                identity.followerCount + identity.followingCount
+                            )}
                         </Typography>
                         <Typography color={"#989898"}>Connections</Typography>
                     </div>
@@ -163,63 +165,58 @@ export const UserPanel: React.FC = () => {
                         <Typography color={"#989898"}>POAPS</Typography>
                     </div>
                     <div className={styles.verifiedCountSection}>
-                        {identity?.twitter ?
-                            (
-                                <>
-                                    <Typography
-                                        variant="h3"
-                                        sx={{
-                                            ":hover": {
-                                                color: "#555",
-                                                cursor: "pointer",
-                                            },
-                                        }}
-                                        onClick={() => [
-                                            setFollowList(false), //sets list modal to show followers
-                                            showPoapsList(false),
-                                            showNftList(false),
-                                            showVerifyList(true),
-                                        ]}
-                                    >
-                                        
-                                            {2}
-                                    </Typography>
-                                    <Typography color={"#989898"}>
-                                        Verified ACCOUNTS
-                                    </Typography>
-                                </>
-                            ):
-                            (
-                                <>
-                                    <Typography
-                                        variant="h3"
-                                        sx={{
-                                            ":hover": {
-                                                color: "#555",
-                                                cursor: "pointer",
-                                            },
-                                        }}
-                                        onClick={() => [
-                                            setFollowList(false), //sets list modal to show followers
-                                            showPoapsList(false),
-                                            showNftList(false),
-                                            showVerifyList(true),
-                                        ]}
-                                    >
-                                        
-                                            {0}
-                                    </Typography>
-                                    <Typography color={"#989898"}>
-                                        Verified ACCOUNTS
-                                    </Typography>
-                                </>
-                            )
-                        }
+                        {identity?.twitter ? (
+                            <>
+                                <Typography
+                                    variant="h3"
+                                    sx={{
+                                        ":hover": {
+                                            color: "#555",
+                                            cursor: "pointer",
+                                        },
+                                    }}
+                                    onClick={() => [
+                                        setFollowList(false), //sets list modal to show followers
+                                        showPoapsList(false),
+                                        showNftList(false),
+                                        showVerifyList(true),
+                                    ]}
+                                >
+                                    {2}
+                                </Typography>
+                                <Typography color={"#989898"}>
+                                    Verified ACCOUNTS
+                                </Typography>
+                            </>
+                        ) : (
+                            <>
+                                <Typography
+                                    variant="h3"
+                                    sx={{
+                                        ":hover": {
+                                            color: "#555",
+                                            cursor: "pointer",
+                                        },
+                                    }}
+                                    onClick={() => [
+                                        setFollowList(false), //sets list modal to show followers
+                                        showPoapsList(false),
+                                        showNftList(false),
+                                        showVerifyList(true),
+                                    ]}
+                                >
+                                    {0}
+                                </Typography>
+                                <Typography color={"#989898"}>
+                                    Verified ACCOUNTS
+                                </Typography>
+                            </>
+                        )}
                     </div>
                 </div>
                 {nftList == true && (
                     <>
-                        {nftCount !=0 && (
+                        {nftCount != 0 && (
                             <div className={styles.nftShowSecion}>
                                 <NftSections />
                             </div>
@@ -261,23 +258,21 @@ export const UserPanel: React.FC = () => {
                 )}
                 {poapsList == true && (
                     <>
-                        {poapsCount != 0 &&( 
+                        {poapsCount != 0 && (
                             <div className={styles.nftShowSecion}>
                                 <PoapsSections />
                             </div>
                         )}
-                        {poapsCount == 0 &&(
+                        {poapsCount == 0 && (
                             <div className={styles.noNftsInSection}>
                                 <p>NO POAPS</p>
                             </div>
                         )}
                     </>
                 )}
-                {verifyList == true &&(
+                {verifyList == true && (
                     <>
-                        <SocialSection
-                            address = {identity?.address}
-                        />
+                        <SocialSection address={identity?.address} />
                     </>
                 )}
             </div>

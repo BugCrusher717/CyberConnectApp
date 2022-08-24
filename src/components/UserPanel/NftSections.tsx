@@ -1,12 +1,8 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-/* eslint-disable no-console */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useGraph } from "@/context/GraphContext";
-import { useWeb3 } from "@/context/web3Context";
 import { foramatTokenID, formatAddress } from "@/utils/helper";
-import { Modal } from '@mantine/core';
+import { Modal } from "@mantine/core";
 import { CircularProgress } from "@mui/material";
-import Image from 'next/image';
+import Image from "next/image";
 import { Loading } from "notiflix";
 import { useCallback, useEffect, useState } from "react";
 import QRCode from "react-qr-code";
@@ -14,22 +10,12 @@ import styles from "./index.module.css";
 
 export const NftSections: React.FC = ({}) => {
     const [isLoading, setIsLoading] = useState<boolean>(true);
-    const { selectAddress} = useGraph();
-    const { address } = useWeb3();
-    const [nftCount, setNftCount] = useState(0);
-    const [poapsCount, setPoapsCount] = useState(0);
+    const { selectAddress } = useGraph();
     const [nfts, setNfts] = useState<any>([]);
-    const [nftModalInfo, setNftModalInfo] = useState<any>(null);
-    const [showList, setShowList] = useState(false);
-    const [listType, setListType] = useState(false);
     const [nftID, setNftId] = useState(0);
 
     const [qrData, setqrData] = useState("");
-    const [dropdownOpen, setdropdownOpen] = useState(false);
     const [opened, setOpened] = useState(false);
-
-    // if (!identity) return null; //only shows UserPanel if all data has loaded
-    // if (isLoading) return null;
 
     useEffect(() => {
         (async () => {
@@ -42,12 +28,9 @@ export const NftSections: React.FC = ({}) => {
             if (res.status === 200) {
                 response = await res.json();
             }
-            console.log(response.ownerNfts);
             setNfts(response.ownedNfts);
-            setNftCount(response.ownedNfts.length);
             setIsLoading(false);
         })();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectAddress]);
 
     const sleep = (ms: number | undefined) => {
@@ -214,9 +197,7 @@ export const NftSections: React.FC = ({}) => {
 
                             <div>
                                 <a
-                                    href={
-                                        "https://opensea.io/" + selectAddress
-                                    }
+                                    href={"https://opensea.io/" + selectAddress}
                                     className={styles.openseaP}
                                 >
                                     View on Opensea
@@ -224,8 +205,7 @@ export const NftSections: React.FC = ({}) => {
                             </div>
                         </div>
                     </div>
-                ))
-            }
+                ))}
             {nfts?.length == 0 && (
                 <div className={styles.noNftsInSection}>
                     <p>Empty</p>

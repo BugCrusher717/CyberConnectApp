@@ -1,9 +1,5 @@
-/* eslint-disable no-console */
-
 import { GET_SOCIAL } from "@/graphql/queries/get_social";
-// import { formatAddress } from "@/utils/helper";
 import { useQuery } from "@apollo/client";
-// import { Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import styles from "./index.module.css";
 
@@ -17,13 +13,9 @@ export const SocialSection = ({ address }: Props) => {
 
     useEffect(() => {
         refetch();
-        console.log(data);
         if(data)
         {
-            console.log(1);
             setsocialData(data);
-            console.log("data:", socialData);
-            // console.log("twitter", socialData.identity.twitter.verified);
         }
     });
 
@@ -33,8 +25,6 @@ export const SocialSection = ({ address }: Props) => {
         },
     });
 
-    // const recommendData = data.recommendations.data.list;
-    // const recommendData = data;
     return (
         <>
             <div className={styles.socialSection}>

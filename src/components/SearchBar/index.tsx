@@ -27,7 +27,7 @@ export const SearchBar: React.FC = () => {
     };
 
     return (
-        <div className = {styles.searchBarSection}>
+        <div className={styles.searchBarSection}>
             <input
                 className={styles.textField}
                 onChange={handleInputChange}

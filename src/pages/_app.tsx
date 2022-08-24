@@ -6,7 +6,6 @@ import client from "@/graphql/client";
 import { ApolloProvider } from "@apollo/client";
 import { StyledEngineProvider } from "@mui/material";
 import type { AppProps } from "next/app";
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { MoralisProvider } from "react-moralis";
 import "../../styles/globals.css";
 
