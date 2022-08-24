@@ -2,8 +2,10 @@
 import { GET_SOCIAL } from "@/graphql/queries/get_social";
 import { formatAddress } from "@/utils/helper";
 import { useQuery } from "@apollo/client";
-import { twitterVerify } from "@cyberlab/social-verifier";
+import { twitterAuthorize, twitterVerify } from "@cyberlab/social-verifier";
+
 import { Modal } from "@mantine/core";
+
 import { useEffect, useState } from "react";
 import styles from "./index.module.css";
 
@@ -37,6 +39,13 @@ export const SocialSection = ({ address }: Props) => {
         
         if (!handle) return;
 
+        const sig = await twitterAuthorize(window.ethereum, accounts[0], handle);
+
+        const message = `Verifying my Web3 identity on @cyberconnecthq: %23LetsCyberConnect %0A ${sig}`;
+        
+        // window.open(`https://twitter.com/intent/tweet?text=${message}`, "_blank");
+
+        console.log(message);
         // Verify the Twitter account
         try {
           await twitterVerify(accounts[0], handle);
