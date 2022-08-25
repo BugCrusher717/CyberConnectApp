@@ -30,8 +30,6 @@ export const RecommendedSection = ({ address }: Props) => {
         }
     }, [data, refetch]);
 
-    
-
     return (
         <>
             {recommendData &&

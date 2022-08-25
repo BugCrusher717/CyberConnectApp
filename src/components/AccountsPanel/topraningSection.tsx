@@ -32,8 +32,6 @@ export const TopRankingSection = ({ address }: Props) => {
         }
     }, [data, refetch]);
 
-    
-
     return (
         <>
             {topRankingData &&

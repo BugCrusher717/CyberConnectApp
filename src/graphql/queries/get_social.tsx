@@ -20,27 +20,3 @@ export const GET_SOCIAL = gql`
         }
     }
 `;
-
-export const verifyTwitterGql = gql`
-  mutation VerifyTwitter(
-    $address: String!
-    $handle: String!
-    $namespace: String
-  ) {
-    verifyTwitter(address: $address, handle: $handle, namespace: $namespace) {
-      result
-    }
-  }
-`;
-
-export const verifyGithubGql = gql`
-  mutation VerifyGithub(
-    $address: String!
-    $gistId: String!
-    $namespace: String
-  ) {
-    verifyGithub(address: $address, gistId: $gistId, namespace: $namespace) {
-      result
-    }
-  }
-`;

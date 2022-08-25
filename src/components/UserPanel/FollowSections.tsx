@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { GET_ADDR_CONNECTION_QUERY } from "@/graphql/queries/get_connections";
 import { formatAddress } from "@/utils/helper";
 import { useQuery } from "@apollo/client";
@@ -24,19 +23,14 @@ export const FollowSections = ({ address, listType }: Props) => {
 
     useEffect(() => {
         refetch();
-        console.log(data);
         if (data) {
             if (listType) {
-                console.log(listType);
                 setModalType(data.identity.followings.list);
             } else {
-                console.log(listType);
                 setModalType(data.identity.followers.list);
             }
         }
     }, [data, listType, refetch]);
-
-    
 
     return (
         <>

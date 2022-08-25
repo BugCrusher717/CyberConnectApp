@@ -4,7 +4,7 @@ export type Identity = {
     domain: string;
     ens: string;
     social: {
-        twitter: string;
+        twitter:string;
     };
     avatar: string;
     joinTime: number;

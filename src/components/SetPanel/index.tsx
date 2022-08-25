@@ -62,7 +62,7 @@ export const SetPanel: React.FC = () => {
                     <p className={styles.titleP}>Account Notifications</p>
                     <NotificationSection address={selectAddress} />
                 </div>
-            </div>
+            </div> 
         </>
     );
 };

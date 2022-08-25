@@ -24,8 +24,6 @@ export const NotificationSection = ({ address }: Props) => {
         }
     }, [data, refetch]);
 
-    
-
     return (
         <div className={styles.allNotificationDiv}>
             {notificationData ? (

@@ -8,7 +8,6 @@ export const GET_IDENTITY = gql`
             ens
             social {
                 twitter
-                
             }
             avatar
             joinTime
