@@ -10,9 +10,6 @@ const nextConfig = {
 
         return config;
     },
-    
-    distDir: 'build',
-
 };
 
 module.exports = nextConfig;
