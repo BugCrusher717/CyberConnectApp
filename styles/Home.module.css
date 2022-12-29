@@ -1,12 +1,5 @@
 /* styles\Home.module.css */
 
-.container {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    background: #0F172A;
-}
-
 .main {
     min-height: 20rem;
     margin-top: 10rem;
