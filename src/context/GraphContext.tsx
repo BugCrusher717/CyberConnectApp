@@ -6,7 +6,7 @@ import { GET_RECOMMENDATION } from "@/graphql/queries/get_recommendation";
 import {
     AllRecommendations,
     AllSocialConnections,
-    SocialConnection,
+    SocialConnection
 } from "@/types/AllSocialConnections";
 import { useQuery } from "@apollo/client";
 import {
@@ -14,7 +14,7 @@ import {
     useCallback,
     useContext,
     useEffect,
-    useState,
+    useState
 } from "react";
 import { Identity } from "../types/identity";
 import { useWeb3 } from "./web3Context";

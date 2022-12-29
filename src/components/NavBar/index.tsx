@@ -22,7 +22,7 @@ export const NavBar: React.FC = () => {
                         router.push("/");
                     }}
                 />
-                <p className = {styles.logop}>DePass</p>
+                <p className={styles.logop}>DePass</p>
             </div>
             <WalletConnectButton />
         </div>

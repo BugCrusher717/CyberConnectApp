@@ -1,5 +1,7 @@
+/* eslint-disable no-console */
 import { useGraph } from "@/context/GraphContext";
 import { formatAddress } from "@/utils/helper";
+import { useQuery } from "@apollo/client";
 import { Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { FollowSections } from "./FollowSections";
@@ -8,11 +10,14 @@ import { NftSections } from "./NftSections";
 import { PoapsSections } from "./PoapsSections";
 import { SocialSection } from './socialSection';
 
+import { GET_SOCIAL } from "@/graphql/queries/get_social";
+
 export const UserPanel: React.FC = () => {
     const { selectAddress, identity } = useGraph();
     const [nftCount, setNftCount] = useState(0);
     const [poapsCount, setPoapsCount] = useState(0);
-
+    const [socialData, setsocialData] = useState<any>([]);
+    const [verifiedCount, setVerifiedCount] = useState(0);
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
     const [followList, setFollowList] = useState<boolean>(false);
@@ -20,14 +25,50 @@ export const UserPanel: React.FC = () => {
     const [poapsList, showPoapsList] = useState<boolean>(false);
     const [verifyList, showVerifyList] = useState<boolean>(false);
     const [listType, setListType] = useState(false);
-
     //fetch the user ether balance from ehterscan API
 
+    const { data, refetch } = useQuery(GET_SOCIAL, {
+        variables: {
+            address: selectAddress,
+        },
+    });
+
+    useEffect(() => {
+        // (async () => {
+            refetch();
+            if (data) {
+                // console.log(data.identity.github.username);
+                console.log("data", data);
+                setsocialData(data);
+                console.log("Social Data", socialData);
+                if(data.identity)
+                {
+                    
+                    if(data.identity.github.username && data.identity.twitter.verified == true )
+                    {
+                        setVerifiedCount(2);
+                    }
+
+                    if(data.identity.github.username && data.identity.twitter.verified != true )
+                    {
+                        setVerifiedCount(1);
+                    }
+                    if(!data.identity.github.username && data.identity.twitter.verified == true )
+                    {
+                        setVerifiedCount(1);
+                    }
+                }
+            }
+        // })();
+    }, [data]);
+    
     useEffect(() => {
         (async () => {
+            console.log(isLoading);
             setIsLoading(true);
+            const NEXT_PUBLIC_ALCHEMY_ID = "ebVtfQPEno3FBoX0wc13m_SQUslqfywc";
             const res = await fetch(
-                `https://eth-mainnet.alchemyapi.io/v2/${process.env.NEXT_PUBLIC_ALCHEMY_ID}/getNFTs/?owner=${selectAddress}`
+                `https://eth-mainnet.alchemyapi.io/v2/${NEXT_PUBLIC_ALCHEMY_ID}/getNFTs/?owner=${selectAddress}`
             );
 
             let response;
@@ -54,11 +95,9 @@ export const UserPanel: React.FC = () => {
         })();
     }, [selectAddress]);
 
-    if (!identity) return null; //only shows UserPanel if all data has loaded
-    if (isLoading) return null;
-
     return (
         <>
+        {identity && (
             <div className={styles.container}>
                 <div className={styles.avatarSection}>
                     {identity.avatar ? (
@@ -138,7 +177,9 @@ export const UserPanel: React.FC = () => {
                                 showVerifyList(false),
                             ]}
                         >
-                            {Number(identity.followerCount + identity.followingCount)}
+                            {Number(
+                                identity.followerCount + identity.followingCount
+                            )}
                         </Typography>
                         <Typography color={"#989898"}>Connections</Typography>
                     </div>
@@ -163,63 +204,33 @@ export const UserPanel: React.FC = () => {
                         <Typography color={"#989898"}>POAPS</Typography>
                     </div>
                     <div className={styles.verifiedCountSection}>
-                        {identity?.twitter ?
-                            (
-                                <>
-                                    <Typography
-                                        variant="h3"
-                                        sx={{
-                                            ":hover": {
-                                                color: "#555",
-                                                cursor: "pointer",
-                                            },
-                                        }}
-                                        onClick={() => [
-                                            setFollowList(false), //sets list modal to show followers
-                                            showPoapsList(false),
-                                            showNftList(false),
-                                            showVerifyList(true),
-                                        ]}
-                                    >
-                                        
-                                            {2}
-                                    </Typography>
-                                    <Typography color={"#989898"}>
-                                        Verified ACCOUNTS
-                                    </Typography>
-                                </>
-                            ):
-                            (
-                                <>
-                                    <Typography
-                                        variant="h3"
-                                        sx={{
-                                            ":hover": {
-                                                color: "#555",
-                                                cursor: "pointer",
-                                            },
-                                        }}
-                                        onClick={() => [
-                                            setFollowList(false), //sets list modal to show followers
-                                            showPoapsList(false),
-                                            showNftList(false),
-                                            showVerifyList(true),
-                                        ]}
-                                    >
-                                        
-                                            {0}
-                                    </Typography>
-                                    <Typography color={"#989898"}>
-                                        Verified ACCOUNTS
-                                    </Typography>
-                                </>
-                            )
-                        }
+                            <>
+                                <Typography
+                                    variant="h3"
+                                    sx={{
+                                        ":hover": {
+                                            color: "#555",
+                                            cursor: "pointer",
+                                        },
+                                    }}
+                                    onClick={() => [
+                                        setFollowList(false), //sets list modal to show followers
+                                        showPoapsList(false),
+                                        showNftList(false),
+                                        showVerifyList(true),
+                                    ]}
+                                >
+                                    {verifiedCount}
+                                </Typography>
+                                <Typography color={"#989898"}>
+                                    Verified ACCOUNTS
+                                </Typography>
+                            </>
                     </div>
                 </div>
                 {nftList == true && (
                     <>
-                        {nftCount !=0 && (
+                        {nftCount != 0 && (
                             <div className={styles.nftShowSecion}>
                                 <NftSections />
                             </div>
@@ -234,18 +245,18 @@ export const UserPanel: React.FC = () => {
                 {followList == true && (
                     <>
                         <div className={styles.sectionButtonDiv}>
-                            <div className={styles.followersButtonDiv}>
+                            <div className={styles.followersButtonDiv} onClick={() => setListType(false)}>
                                 <p
                                     className={styles.followersP}
-                                    onClick={() => setListType(false)}
+                                   
                                 >
                                     Followers
                                 </p>
                             </div>
-                            <div className={styles.followingButtonDiv}>
+                            <div className={styles.followingButtonDiv} onClick={() => setListType(true)}>
                                 <p
                                     className={styles.followingP}
-                                    onClick={() => setListType(true)}
+                                    
                                 >
                                     Following
                                 </p>
@@ -261,26 +272,31 @@ export const UserPanel: React.FC = () => {
                 )}
                 {poapsList == true && (
                     <>
-                        {poapsCount != 0 &&( 
+                        {poapsCount != 0 && (
                             <div className={styles.nftShowSecion}>
                                 <PoapsSections />
                             </div>
                         )}
-                        {poapsCount == 0 &&(
+                        {poapsCount == 0 && (
                             <div className={styles.noNftsInSection}>
                                 <p>NO POAPS</p>
                             </div>
                         )}
                     </>
                 )}
-                {verifyList == true &&(
+                {verifyList == true && (
                     <>
-                        <SocialSection
-                            address = {identity?.address}
-                        />
+                        {verifiedCount ? (
+                            <SocialSection address={identity?.address} />
+                        ):(
+                            <div className={styles.noNftsInSection}>
+                                <p>NO VerifiedAccount</p>
+                            </div>
+                        )}
                     </>
                 )}
             </div>
+            )}
         </>
     );
 };

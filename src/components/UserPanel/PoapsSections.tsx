@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { useGraph } from "@/context/GraphContext";
 import { CircularProgress, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
@@ -19,7 +18,6 @@ export const PoapsSections: React.FC = ({}) => {
             if (res.status === 200) {
                 response = await res.json();
             }
-            console.log(response);
             setPoaps(response);
             setIsLoading(false);
         })();

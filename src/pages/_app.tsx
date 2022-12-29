@@ -6,11 +6,13 @@ import client from "@/graphql/client";
 import { ApolloProvider } from "@apollo/client";
 import { StyledEngineProvider } from "@mui/material";
 import type { AppProps } from "next/app";
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { MoralisProvider } from "react-moralis";
 import "../../styles/globals.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
+
+    const NEXT_PUBLIC_MORALIS_SERVER_URL = "https://rcilxpxrbaqi.usemoralis.com:2053/server";
+    const NEXT_PUBLIC_MORALIS_APP_ID = "hIOGSYq1EZARrCeU5mgofDu1pbq2cUirtq9IcTSX";
 
     return (
         <div>
@@ -20,9 +22,9 @@ function MyApp({ Component, pageProps }: AppProps) {
                         <GraphContextProvider>
                             <MoralisProvider
                                 serverUrl={
-                                    process.env.NEXT_PUBLIC_MORALIS_SERVER_URL!
+                                    NEXT_PUBLIC_MORALIS_SERVER_URL!
                                 }
-                                appId={process.env.NEXT_PUBLIC_MORALIS_APP_ID!}
+                                appId={NEXT_PUBLIC_MORALIS_APP_ID!}
                             >
                                 <Component {...pageProps} />
                             </MoralisProvider>

@@ -223,13 +223,12 @@
     align-items: center;
     padding: 9.02894px;
     gap: 9.03px;
-    width: 104.53px;
+    width: 100%;
     height: 42.06px;
     cursor: pointer;
 }
 
 .verifiedP{
-    width: 63px;
     height: 24px;
     font-family: 'Poppins';
     font-style: normal;
@@ -241,6 +240,18 @@
     color: #27AE60;
 }
 
+.unverifiedP{
+    height: 24px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    color: #fff;
+}
+
 .socialSection{
     display: flex;
     justify-content: center;
@@ -250,4 +261,308 @@
 .notificationPanel{
     width: 100%;
     padding: 20px;
+}
+
+.allNotificationDiv{
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    height: 150px;
+}
+
+
+/*Modal*/
+.modalTitle{
+    color: #fff;
+    line-height: 2rem;
+    font-weight: 800;
+}
+
+.modalMainP{
+    color: #7b7d82;
+    margin-top: 1rem;
+}
+
+.walletModalDiv{
+    padding: 1rem;
+    background-color: var(--bg-lighter);
+    border-radius: 0.375rem;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    margin-top: 1rem;
+}
+
+.modalunverifiedP{
+    font-size: .875rem;
+    line-height: 1.25rem;
+    color:#ffd138;
+}
+
+.twitterHandleDiv{
+    box-shadow: var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow);
+    border-radius: 0.375rem;
+    flex-direction: column;
+    display: flex;
+    justify-content: left;
+    /* align-items: center;
+    justify-items: center;
+    text-align: center; */
+    width: 100%;
+    background-color: #7b7d82;
+    position: relative;
+    margin-top: 10px;
+}
+
+.spanStyle{
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    color: #fff;
+}
+
+.pointerDiv{
+    padding-left: 0.75rem;
+    align-items: center;
+    display: flex;
+    position: absolute;
+}
+
+.inputStyle{
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    color: #00000e;
+    padding-left: 1.75rem;
+    padding-right: 3rem;
+    padding: 1rem;
+    border-radius: 0.375rem;
+    border: none;
+    background-color: #ffffff;
+    width: 100%;
+}
+
+.signButtonStyle{
+    color: #fff;
+    padding: 0.75rem;
+    /* background-color: #fff; */
+    margin-top: 1rem;
+    cursor: pointer;
+    border-radius: 0.375rem;
+    width: 100%;
+    text-align: center;
+    border: 1px solid #1f9bf0;
+    background-color: #1f9bf0;
+}
+
+.verifyButtonStyle{
+    color: #fff;
+    padding: 0.75rem;
+    background-color: rgb(7, 54, 50);
+    margin-top: 1rem;
+    margin-left: 1rem;
+    cursor: pointer;
+    border-radius: 0.375rem;
+    width: 100%;
+    text-align: center;
+}
+
+.avatar {
+    border-radius: 10px;
+    background-color: #FFB600;
+    width: 50px;
+    height: 50px; 
+}
+
+.addressSection{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.walletAddressModalP{
+    color: #fff;
+    font-weight: 600;
+    line-height: 1.75rem;
+    font-size: 1.125rem;
+    margin-left: 1rem;
+}
+
+.signButtonDiv{
+    display: flex;
+    flex-direction: row;
+     
+}
+
+.step1Section{
+    border-radius: 10px;
+    justify-content: center;
+    flex-direction: column;
+    border: 1px solid #fff;
+    display: flex;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.step2Section{
+    border-radius: 10px;
+    justify-content: center;
+    flex-direction: column;
+    border: 1px solid #fff;
+    display: flex;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.step3Section{
+    border-radius: 10px;
+    justify-content: center;
+    flex-direction: column;
+    border: 1px solid #fff;
+    display: flex;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.step4Section{
+    border-radius: 10px;
+    justify-content: center;
+    flex-direction: column;
+    border: 1px solid #fff;
+    display: flex;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.step1Title{
+    display: flex;
+    height: 50px;
+    justify-content: center;
+}
+
+.step2Title{
+    display: flex;
+    height: 50px;
+    justify-content: center;
+}
+
+.step3Title{
+    display: flex;
+    height: 50px;
+    justify-content: center;
+}
+
+.step4Title{
+    display: flex;
+    height: 50px;
+    justify-content: center;
+}
+
+.step1P{
+    color: white;
+    font-size: 1.5rem;
+}
+
+.step2P{
+    color: white;
+    font-size: 1.5rem;
+}
+
+.step3P{
+    color: white;
+    font-size: 1.5rem;
+}
+
+.step4P{
+    color: white;
+    font-size: 1.5rem;
+}
+
+.step1MainP{
+    color: #7b7d82;
+    font-size: 1.3rem;
+}
+
+.step2MainP{
+    color: #7b7d82;
+    font-size: 1.3rem;
+}
+
+.step3MainP{
+    color: #7b7d82;
+    font-size: 1.3rem;
+}
+
+.step4MainP{
+    color: #7b7d82;
+    font-size: 1.3rem;
+}
+
+.step1MainSection{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.step2MainSection{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.step3MainSection{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.step4MainSection{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.step1CopySection{
+    border: 1px solid #ae1ff0;
+    width: 150px;
+    height: 60px;
+    padding: 10px;
+    align-items: center;
+    text-align: center;
+    justify-items: center;
+    display: flex;
+    justify-content: center;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+.step2OpenSection{
+    border: 1px solid #ae1ff0;
+    width: 150px;
+    height: 60px;
+    padding: 10px;
+    align-items: center;
+    text-align: center;
+    justify-items: center;
+    display: flex;
+    justify-content: center;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+.step4VerifySection{
+    border: 1px solid #ae1ff0;
+    width: 200px;
+    height: 60px;
+    padding: 10px;
+    align-items: center;
+    text-align: center;
+    justify-items: center;
+    display: flex;
+    justify-content: center;
+    border-radius: 1rem;
+    cursor: pointer;
 }

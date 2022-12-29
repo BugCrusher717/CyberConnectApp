@@ -61,12 +61,7 @@ export const Web3ContextProvider: React.FC = ({ children }) => {
     }, [initCyberConnect]);
 
     const disconnectWallet = useCallback(async () => {
-        // init Web3Modal
-        alert(1);
-        // const clear = await web3Modal.clearCachedProvider();
-        // setAddress("");
-        // setEns("");
-        
+        alert(1);       
     }, []);
 
     // the function to get users' address from their ens

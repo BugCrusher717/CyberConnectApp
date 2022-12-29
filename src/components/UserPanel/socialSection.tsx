@@ -1,9 +1,5 @@
-/* eslint-disable no-console */
-
 import { GET_SOCIAL } from "@/graphql/queries/get_social";
-// import { formatAddress } from "@/utils/helper";
 import { useQuery } from "@apollo/client";
-// import { Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import styles from "./index.module.css";
 
@@ -12,20 +8,7 @@ interface Props {
 }
 
 export const SocialSection = ({ address }: Props) => {
-
     const [socialData, setsocialData] = useState<any>([]);
-
-    useEffect(() => {
-        refetch();
-        console.log(data);
-        if(data)
-        {
-            console.log(1);
-            setsocialData(data);
-            console.log("data:", socialData);
-            // console.log("twitter", socialData.identity.twitter.verified);
-        }
-    });
 
     const { data, refetch } = useQuery(GET_SOCIAL, {
         variables: {
@@ -33,47 +16,123 @@ export const SocialSection = ({ address }: Props) => {
         },
     });
 
-    // const recommendData = data.recommendations.data.list;
-    // const recommendData = data;
+    useEffect(() => {
+        refetch();
+        if (data) {
+            setsocialData(data);
+        }
+    }, [data, refetch]);
+
     return (
         <>
-            <div className={styles.socialSection}>
-                {socialData.identity && socialData.identity.twitter.verified == true && (
+            {socialData.identity && (
+                <div className={styles.socialSection}>
+                    {socialData.identity.twitter.verified == true && (
                         <>
                             <div className={styles.twitter}>
                                 <div className={styles.twitterImageDiv}>
-                                    <img src={"/twitter.png"} alt={""} className={styles.twitterImage}/>
-                                    <img src={"/carbon_overflow-menu-vertical.png"} alt={""} className={styles.twitterImage}/>
+                                    <img
+                                        src={"/twitter.png"}
+                                        alt={""}
+                                        className={styles.twitterImage}
+                                    />
+                                    <img
+                                        src={
+                                            "/carbon_overflow-menu-vertical.png"
+                                        }
+                                        alt={""}
+                                        className={styles.twitterImage}
+                                    />
                                 </div>
-                                <div className = {styles.twitterPDiv}>
-                                    <p >Twitter</p>
-                                    <a href={"https://twitter.com/" + socialData.identity.handle}>{"@" + socialData.identity.twitter.handle}</a>
+                                <div className={styles.twitterPDiv}>
+                                    <p>Twitter</p>
+                                    <a
+                                        href={
+                                            "https://twitter.com/" +
+                                            socialData.identity.handle
+                                        }
+                                    >
+                                        {"@" +
+                                            socialData.identity.twitter.handle}
+                                    </a>
                                 </div>
                                 <div className={styles.verifyDiv}>
-                                    <img src={"/veirify_icon.png"} alt={""} className={styles.twitterImage}/>
+                                    <img
+                                        src={"/veirify_icon.png"}
+                                        alt={""}
+                                        className={styles.twitterImage}
+                                    />
                                     <p className={styles.verifiedP}>Verified</p>
                                 </div>
                             </div>
                             <div className={styles.github}>
                                 <div className={styles.twitterImageDiv}>
-                                    <img src={"/github_icon.png"} alt={""} className={styles.twitterImage}/>
-                                    <img src={"/carbon_overflow-menu-vertical.png"} alt={""} className={styles.twitterImage}/>
+                                    <img
+                                        src={"/github_icon.png"}
+                                        alt={""}
+                                        className={styles.twitterImage}
+                                    />
+                                    <img
+                                        src={
+                                            "/carbon_overflow-menu-vertical.png"
+                                        }
+                                        alt={""}
+                                        className={styles.twitterImage}
+                                    />
                                 </div>
-                                <div className = {styles.twitterPDiv}>
-                                    <p >Github</p>
-                                    <a href = {"https://Github.com"} >Connect to Github</a>
+                                <div className={styles.twitterPDiv}>
+                                    <p>Github</p>
+                                    <a href={"https://Github.com"}>
+                                        Connect to Github
+                                    </a>
                                 </div>
                             </div>
                         </>
-                    )
-                }
-                {socialData.identity && socialData.identity.twitter.verified == false && (
-                        <div className={styles.noNftsInSection}>
-                            <p>No Accounts</p>
+                    )}
+
+                    {socialData.identity.github.username && (
+                        <div className={styles.github}>
+                            <div className={styles.twitterImageDiv}>
+                                <img
+                                    src={"/github_icon.png"}
+                                    alt={""}
+                                    className={styles.twitterImage}
+                                />
+                                <img
+                                    src={"/carbon_overflow-menu-vertical.png"}
+                                    alt={""}
+                                    className={styles.twitterImage}
+                                />
+                            </div>
+                            <div className={styles.twitterPDiv}>
+                                <p>Github</p>
+                                <a
+                                    href={
+                                        "https://github.com/" +
+                                        socialData.identity.github.username
+                                    }
+                                >
+                                    {"@" + socialData.identity.github.username}
+                                </a>
+                            </div>
+                            <div className={styles.verifyDiv}>
+                                <img
+                                    src={"/veirify_icon.png"}
+                                    alt={""}
+                                    className={styles.twitterImage}
+                                />
+                                <p className={styles.verifiedP}>Verified</p>
+                            </div>
                         </div>
-                )}
-                
-            </div>
+                    )}
+                    {socialData.identity.twitter.verified == false &&
+                        !socialData.identity.github.username && (
+                            <div className={styles.noNftsInSection}>
+                                <p>No Accounts</p>
+                            </div>
+                        )}
+                </div>
+            )}
         </>
     );
 };

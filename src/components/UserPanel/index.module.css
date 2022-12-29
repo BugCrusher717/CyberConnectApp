@@ -529,7 +529,6 @@ div.nftShowSecion::-webkit-scrollbar-thumb:hover {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-fill-color: transparent;
 }
 
 .followingP{
@@ -610,18 +609,10 @@ div.sectionWrapper::-webkit-scrollbar-thumb:hover {
     border-radius: 18px;
 }
 
-.avatarDiv{
-
-}
-
 .connectionShowSection{
     /* display: flex; */
     align-items: center;
     flex-direction: column;
-}
-
-.followButtonDiv{
-
 }
 
 /*Poaps Section*/
@@ -672,7 +663,7 @@ div.sectionWrapper::-webkit-scrollbar-thumb:hover {
     align-items: right;
     padding-left: 30px;
     padding-right: 30px;
-    justify-content: end;
+    justify-content: flex-end;
 }
 .poapnameP{
     font-family: 'Poppins';

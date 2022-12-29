@@ -20,12 +20,18 @@ export const NavBar: React.FC = () => {
                     Web3 Social
                 </p>
             </div>
-            <div className={styles.searchBarSection} onClick={()=>{router.push('accounts')}}>
-                <p className={styles.searchBarP}>Search By ENS, SNS , Address</p>
-                <img className = {styles.serachIcon} src ={'searchIcon.png'}/>
+            <div
+                className={styles.searchBarSection}
+                onClick={() => {
+                    router.push("accounts");
+                }}
+            >
+                <p className={styles.searchBarP}>
+                    Search By ENS, SNS , Address
+                </p>
+                <img className={styles.serachIcon} src={"searchIcon.png"} />
             </div>
-            <div className = {styles.walletDiv}>
-                
+            <div className={styles.walletDiv}>
                 <WalletConnectButton />
             </div>
         </div>
